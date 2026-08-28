@@ -7,6 +7,7 @@ const money = (value: number) => `${value.toLocaleString("fr-FR")} FCFA`;
 export default async function Dashboard() {
     if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) return <main className="mx-auto max-w-2xl px-5 py-24"><p className="eyebrow">Configuration requise</p><h1 className="mt-5 text-5xl">Connectez Supabase pour ouvrir votre espace.</h1><p className="sans mt-6 text-[#66705f]">Renseignez les variables d’environnement documentées dans `.env.example`, puis appliquez les migrations.</p></main>;
     const supabase = await createClient(); const { data: { user } } = await supabase.auth.getUser(); if (!user) redirect("/connexion");
+    await supabase.rpc("qualify_current_user");
     const [{ data: profile }, { data: wallet }, { data: rewards }, { data: referrals }, { data: withdrawals }] = await Promise.all([
         supabase.from("profiles").select("full_name, referral_code").eq("id", user.id).single(), supabase.from("wallets").select("balance").eq("user_id", user.id).single(), supabase.from("reward_transactions").select("amount, kind, note, created_at").eq("user_id", user.id).order("created_at", { ascending: false }).limit(20), supabase.from("referrals").select("id, referred_id, qualified_at, created_at").eq("sponsor_id", user.id).order("created_at", { ascending: false }), supabase.from("withdrawals").select("amount, status, created_at").eq("user_id", user.id).order("created_at", { ascending: false }).limit(20),
     ]);
