@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="BonusLink, la plateforme transparente pour recommander et suivre vos récompenses.">
+    <title>BonusLink | Gagnez avec vos recommandations</title>
+    <style>
+        :root {
+            --ink: #17211b;
+            --paper: #f4f1e8;
+            --lime: #c8ef62;
+            --coral: #ff7657;
+            --line: #d9d7cb;
+            --muted: #66705f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .sans {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .wrap {
+            width: min(1120px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+        }
+
+        .logo {
+            font: 900 24px Arial, Helvetica, sans-serif;
+            letter-spacing: -1px;
+        }
+
+        .logo span,
+        em {
+            color: var(--coral);
+        }
+
+        .button {
+            display: inline-block;
+            border-radius: 999px;
+            background: var(--ink);
+            color: var(--paper);
+            padding: 13px 22px;
+            font: 700 14px Arial, Helvetica, sans-serif;
+        }
+
+        .hero {
+            min-height: 610px;
+            border-block: 1px solid var(--line);
+            padding: 72px 0;
+            background-image: radial-gradient(#17211b18 .7px, transparent .7px);
+            background-size: 8px 8px;
+        }
+
+        .eyebrow {
+            color: var(--muted);
+            font: 700 11px Arial, Helvetica, sans-serif;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 900px;
+            margin: 28px 0 42px;
+            font-size: clamp(54px, 9vw, 118px);
+            line-height: .9;
+            letter-spacing: -4px;
+        }
+
+        .intro {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .intro p {
+            max-width: 260px;
+            margin: 0;
+            color: var(--muted);
+            font: 14px/1.5 Arial, Helvetica, sans-serif;
+        }
+
+        .principle {
+            max-width: 380px;
+            margin: 76px 0 0 auto;
+            padding: 28px;
+            background: var(--lime);
+        }
+
+        .principle h2 {
+            margin: 38px 0 18px;
+            font-size: 30px;
+            line-height: 1.05;
+            font-weight: 400;
+        }
+
+        .principle p:last-child {
+            margin: 0;
+            color: var(--muted);
+            font: 14px/1.55 Arial, Helvetica, sans-serif;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 80px 0;
+        }
+
+        .features h2 {
+            margin: 16px 0 10px;
+            font-size: 28px;
+            font-weight: 400;
+        }
+
+        .features p {
+            margin: 0;
+            color: var(--muted);
+            font: 14px/1.6 Arial, Helvetica, sans-serif;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            padding: 28px 0 40px;
+            color: var(--muted);
+            font: 12px Arial, Helvetica, sans-serif;
+        }
+
+        @media (max-width: 640px) {
+            .wrap {
+                width: min(100% - 32px, 1120px);
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            .hero {
+                padding: 58px 0;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            .principle {
+                margin-top: 58px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 58px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="wrap">
+        <a class="logo" href="./">bonus<span>link</span><sup>®</sup></a>
+        <a class="button" href="https://github.com/bdibbodd-boop/bonuslink">Voir le projet ↗</a>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="wrap">
+                <p class="eyebrow">Une plateforme pensée pour le bouche-à-oreille</p>
+                <h1>Recommandez<br><em>avec impact.</em></h1>
+                <div class="intro">
+                    <a class="button" href="https://github.com/bdibbodd-boop/bonuslink">Découvrir BonusLink ↗</a>
+                    <p>Un espace clair pour suivre vos recommandations et vos récompenses.</p>
+                </div>
+                <div class="principle">
+                    <p class="eyebrow">Le principe</p>
+                    <h2>Chaque recommandation utile mérite d’être reconnue.</h2>
+                    <p>BonusLink prépare une expérience de parrainage transparente, avec des montants et des conditions
+                        lisibles.</p>
+                </div>
+            </div>
+        </section>
+        <section class="wrap features">
+            <div>
+                <p class="eyebrow">01 / Simple</p>
+                <h2>Un lien personnel</h2>
+                <p>Partagez votre lien quand vous le souhaitez et gardez une vue claire sur son activité.</p>
+            </div>
+            <div>
+                <p class="eyebrow">02 / Lisible</p>
+                <h2>Un solde traçable</h2>
+                <p>Les récompenses reposent sur un historique vérifiable, pas sur un compteur opaque.</p>
+            </div>
+            <div>
+                <p class="eyebrow">03 / Responsable</p>
+                <h2>Des retraits encadrés</h2>
+                <p>Les moyens de paiement sont activés avec des règles claires et une revue adaptée.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap">bonus<span>link</span> · La recommandation qui compte.</div>
+    </footer>
+</body>
+
+</html>
