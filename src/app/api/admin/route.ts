@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const supabase = await createClient(); const { data: { user } } = await supabase.auth.getUser();
     if (!user) return NextResponse.json({ error: "Authentification requise" }, { status: 401 });
     try {
-        const body = await request.json() as { action?: string; withdrawalId?: string; status?: string; reason?: string; userId?: string; suspend?: boolean; key?: string; value?: number | boolean };
+        const body = await request.json() as { action?: string; withdrawalId?: string; status?: string; reason?: string; userId?: string; suspend?: boolean; key?: string; value?: number | boolean; id?: string; name?: string; description?: string; active?: boolean };
         let error;
         if (body.action === "withdrawal") {
             if (!body.withdrawalId || !["PROCESSING", "APPROVED", "PAID", "REJECTED", "CANCELLED"].includes(body.status ?? "")) return NextResponse.json({ error: "Action invalide" }, { status: 400 });
@@ -17,6 +17,9 @@ export async function POST(request: Request) {
         } else if (body.action === "setting") {
             if (!body.key || (typeof body.value !== "number" && typeof body.value !== "boolean")) return NextResponse.json({ error: "Paramètre invalide" }, { status: 400 });
             ({ error } = await supabase.rpc("admin_set_setting", { setting_key: body.key, setting_value: body.value }));
+        } else if (body.action === "campaign") {
+            if (body.id !== undefined && typeof body.id !== "string" || typeof body.name !== "string" || typeof body.description !== "string" || typeof body.active !== "boolean") return NextResponse.json({ error: "Campagne invalide" }, { status: 400 });
+            ({ error } = await supabase.rpc("admin_upsert_campaign", { campaign_id: body.id ?? null, campaign_name: body.name, campaign_description: body.description, campaign_active: body.active }));
         } else return NextResponse.json({ error: "Action inconnue" }, { status: 400 });
         if (error) return NextResponse.json({ error: "Action refusée" }, { status: 422 });
         return NextResponse.json({ ok: true });
