@@ -1,0 +1,3 @@
+import { PublicPage } from "@/components/public-page";
+export const metadata = { title: "À propos" };
+export default function Page() { return <PublicPage eyebrow="À propos" title="Construire la confiance autour de la recommandation." text="BonusLink est une base produit pour rendre les récompenses plus simples à comprendre et à vérifier." sections={[{ heading: "Notre approche", body: "Commencer par des règles explicites, des données traçables et des accès correctement protégés." }, { heading: "Notre état actuel", body: "Le socle technique et le schéma initial sont en place. L’authentification, les workflows métier et l’administration restent à développer." }]} />; }

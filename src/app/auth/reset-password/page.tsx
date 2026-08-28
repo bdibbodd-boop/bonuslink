@@ -1,0 +1,4 @@
+"use client";
+import { FormEvent, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+export default function Page() { const [password, setPassword] = useState(""); const [message, setMessage] = useState(""); async function submit(event: FormEvent) { event.preventDefault(); const { error } = await createClient().auth.updateUser({ password }); setMessage(error?.message ?? "Mot de passe mis à jour."); } return <main className="mx-auto max-w-xl px-5 py-20"><p className="eyebrow">Sécurité</p><h1 className="mt-5 text-5xl">Choisir un nouveau mot de passe.</h1><form onSubmit={submit} className="sans mt-10 grid gap-4"><label>Nouveau mot de passe<input required minLength={8} type="password" value={password} onChange={(e) => setPassword(e.target.value)} /></label><button className="rounded-full bg-[#17211b] px-5 py-3 font-bold text-[#f4f1e8]">Mettre à jour</button><p role="status">{message}</p></form></main>; }
