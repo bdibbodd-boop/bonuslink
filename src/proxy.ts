@@ -8,7 +8,7 @@ export async function proxy(request: NextRequest) {
         cookies: { getAll: () => request.cookies.getAll(), setAll: (values) => values.forEach(({ name, value }) => { request.cookies.set(name, value); response = NextResponse.next({ request }); response.cookies.set(name, value); }) },
     });
     const { data: { user } } = await supabase.auth.getUser();
-    if (request.nextUrl.pathname.startsWith("/dashboard") && !user) {
+    if ((request.nextUrl.pathname.startsWith("/dashboard") || request.nextUrl.pathname.startsWith("/admin") || request.nextUrl.pathname.startsWith("/notifications") || request.nextUrl.pathname.startsWith("/methodes-paiement") || request.nextUrl.pathname.startsWith("/retraits/demande")) && !user) {
         return NextResponse.redirect(new URL("/connexion", request.url));
     }
     return response;
